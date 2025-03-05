@@ -11,8 +11,8 @@ def parse_args():
 
     # General
     parser.add_argument('--env-name', type=str,
-                        # default='HalfCheetahDir-v1',
-                        default='2DNavigation-v0',
+                        default='HalfCheetahDir-v1',
+                        # default='2DNavigation-v0',
                         help='name of the environment')
     parser.add_argument('--gamma', type=float, default=0.95,
                         help='value of the discount factor gamma')
