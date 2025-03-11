@@ -13,9 +13,9 @@ data/miniimagenet/images
 data/CelebA/
 
 # result folders
-saves/
-logs/
-plots/
-results/
-*result_plots
-*result_files
+# saves/
+# logs/
+# plots/
+# results/
+# *result_plots
+# *result_files
