@@ -1,0 +1,9 @@
+START DOCKER DESKTOP
+
+If required only:
+docker build . -t mujoco --no-cache
+
+Every time:
+docker run -it mujoco /bin/bash
+
+
