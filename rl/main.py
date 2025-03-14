@@ -54,6 +54,7 @@ def total_rewards(episodes_per_task, interval=False):
 
 def main(args):
     print('starting....')
+    print('args: ', args)
 
     utils.set_seed(args.seed, cudnn=args.make_deterministic)
 

@@ -20,7 +20,7 @@ def parse_args():
                         help='value of the discount factor for GAE')
     parser.add_argument('--first-order', action='store_true',
                         help='use the first-order approximation of MAML/CAVIA')
-    parser.add_argument('--num-context-params', type=int, default=50,            # was 2 
+    parser.add_argument('--num-context-params', type=int, default=50,                                   # was 2 
                         help='number of context parameters')
 
     # Run MAML instead of CAVIA
