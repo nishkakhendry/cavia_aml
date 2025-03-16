@@ -2,7 +2,7 @@ import multiprocessing as mp
 
 import gym
 import torch
-
+import time
 from envs.subproc_vec_env import SubprocVecEnv
 from episode import BatchEpisodes
 
@@ -42,6 +42,8 @@ class BatchSampler(object):
                 observations_tensor = torch.from_numpy(observations).to(device=self.device)
                 actions_tensor = policy(observations_tensor, params=params).sample()
                 actions = actions_tensor.cpu().numpy()
+
+            time.sleep(0.0001)
             new_observations, rewards, dones, new_batch_ids, _ = self.envs.step(actions)
             episodes.append(observations, actions, rewards, batch_ids)
             observations, batch_ids = new_observations, new_batch_ids
