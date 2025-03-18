@@ -11,8 +11,8 @@ def parse_args():
 
     # General
     parser.add_argument('--env-name', type=str,
-                        default='HalfCheetahDir-v1',
-                        # default='2DNavigation-v0',
+                        # default='HalfCheetahDir-v1',
+                        default='2DNavigation-v0',
                         help='name of the environment')
     parser.add_argument('--gamma', type=float, default=0.95,
                         help='value of the discount factor gamma')
@@ -20,7 +20,7 @@ def parse_args():
                         help='value of the discount factor for GAE')
     parser.add_argument('--first-order', action='store_true',
                         help='use the first-order approximation of MAML/CAVIA')
-    parser.add_argument('--num-context-params', type=int, default=50,                                   # was 2 
+    parser.add_argument('--num-context-params', type=int, default=2,                                   # was 2 / 50
                         help='number of context parameters')
 
     # Run MAML instead of CAVIA
@@ -45,13 +45,13 @@ def parse_args():
     # Task-specific
     parser.add_argument('--fast-batch-size', type=int, default=20,
                         help='number of rollouts for each individual task ()')
-    parser.add_argument('--fast-lr', type=float, default=10,                # was 0.1
+    parser.add_argument('--fast-lr', type=float, default=1.0,                # was 1.0 / 10
                         help='learning rate for the 1-step gradient update of MAML/CAVIA')
 
     # Optimization
     parser.add_argument('--num-batches', type=int, default=500,
                         help='number of batches')
-    parser.add_argument('--meta-batch-size', type=int, default=40,          # was 20
+    parser.add_argument('--meta-batch-size', type=int, default=20,          # was 20 / 40
                         help='number of tasks per batch')
     parser.add_argument('--max-kl', type=float, default=1e-2,
                         help='maximum value for the KL constraint in TRPO')
