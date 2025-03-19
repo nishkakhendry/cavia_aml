@@ -132,7 +132,7 @@ class MetaLearner(object):
                 test_episodes = self.sampler.sample(self.policy, gamma=self.gamma, params=params, batch_size=batch_size)
                 curr_episodes.append(test_episodes)
 
-                task_cp[batch]["grad_update_"+str(i)]["task_"+str(task_idx)]  = {"task": task, "context_params": self.policy.context_params.tolist()}
+                task_cp["batch_"+str(batch)]["grad_update_"+str(i)]["task_"+str(task_idx)]  = {"task": task, "context_params": self.policy.context_params.tolist()}
                 # task_cp[batch][str(i)][task] = self.policy.context_params
 
             episodes_per_task.append(curr_episodes)
