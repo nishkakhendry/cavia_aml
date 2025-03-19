@@ -136,7 +136,7 @@ class MetaLearner(object):
                 
                 # task_cp[batch][str(i)][task] = self.policy.context_params
                 with open('./task_cp.txt', 'a') as f:
-                    f.write(json.dumps(task_cp, f))
+                    f.write(json.dumps(task_cp))
                     f.write('\n')
 
             episodes_per_task.append(curr_episodes)
