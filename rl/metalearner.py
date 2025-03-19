@@ -4,6 +4,7 @@ from torch.nn.utils.convert_parameters import (vector_to_parameters,
                                                parameters_to_vector)
 
 from rl_utils.optimization import conjugate_gradient
+import json
 from rl_utils.torch_utils import (weighted_mean, detach_distribution, weighted_normalize)
 
 
@@ -93,12 +94,14 @@ class MetaLearner(object):
 
         return episodes, losses
 
-    def test(self, tasks, num_steps, batch_size, halve_lr):
+    def test(self, tasks, num_steps, batch_size, halve_lr,batch=0):
         """Sample trajectories (before and after the update of the parameters)
         for all the tasks `tasks`.batchsize
         """
+        task_cp = {batch: {"0": {}, "1": {}, "2": {}, "3": {}, "4": {}}}
         episodes_per_task = []
         for task in tasks:
+            print("TASK IS - - - - -", task)
 
             # reset context params (for cavia) and task
             self.policy.reset_context()
@@ -128,9 +131,16 @@ class MetaLearner(object):
                 test_episodes = self.sampler.sample(self.policy, gamma=self.gamma, params=params, batch_size=batch_size)
                 curr_episodes.append(test_episodes)
 
+                task_cp[batch][str(i)][task] = self.policy.context_params
+
             episodes_per_task.append(curr_episodes)
 
         self.policy.reset_context()
+
+        with open('task_cp.json', 'a') as f:
+            json.dump(task_cp, f)
+            f.write('\n')
+
         return episodes_per_task
 
     def kl_divergence(self, episodes, old_pis=None):

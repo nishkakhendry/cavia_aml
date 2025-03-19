@@ -20,7 +20,7 @@ def parse_args():
                         help='value of the discount factor for GAE')
     parser.add_argument('--first-order', action='store_true',
                         help='use the first-order approximation of MAML/CAVIA')
-    parser.add_argument('--num-context-params', type=int, default=2,                                   # was 2 / 50
+    parser.add_argument('--num-context-params', type=int, default=5,                                   # was 2 / 50
                         help='number of context parameters')
 
     # Run MAML instead of CAVIA
@@ -45,7 +45,7 @@ def parse_args():
     # Task-specific
     parser.add_argument('--fast-batch-size', type=int, default=20,
                         help='number of rollouts for each individual task ()')
-    parser.add_argument('--fast-lr', type=float, default=1.0,                # was 1.0 / 10
+    parser.add_argument('--fast-lr', type=float, default=0.2,                # was 1.0 / 10
                         help='learning rate for the 1-step gradient update of MAML/CAVIA')
 
     # Optimization
