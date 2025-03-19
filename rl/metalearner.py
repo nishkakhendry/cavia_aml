@@ -102,7 +102,7 @@ class MetaLearner(object):
         episodes_per_task = []
         task_idx = 0
         for task in tasks:
-            print("TASK IS - - - - -", task)
+            # print("TASK IS - - - - -", task)
 
             # reset context params (for cavia) and task
             self.policy.reset_context()
@@ -134,23 +134,15 @@ class MetaLearner(object):
 
                 context_params = [x.item() for x in list(self.policy.context_params)]
                 task_cp["batch_"+str(batch)]["grad_update_"+str(i)]["task_"+str(task_idx)]  = {"task": list(task["goal"]), "context_params": context_params}
-                
-                # delete
-                # task_cp[batch][str(i)][task] = self.policy.context_params
-                # print("task_cp is ----- ",task_cp)
-                # with open('./task_cp.txt', 'a') as f:
-                #     f.write(json.dumps(task_cp))
-                #     f.write('\n')
-                with open('./task_cp.json', 'a') as f:
-                    json.dump(task_cp, f)
-                    f.write('\n')
+
 
             episodes_per_task.append(curr_episodes)
-            print("task_cp - - - - at task ", task_idx, " is ----- ",task_cp)
+            # print("task_cp - - - - at task ", task_idx, " is ----- ",task_cp)
             task_idx += 1
 
         self.policy.reset_context()
 
+        print("writing context parameters for all test tasks")
         with open('./task_cp.json', 'a') as f:
             json.dump(task_cp, f)
             f.write('\n')
