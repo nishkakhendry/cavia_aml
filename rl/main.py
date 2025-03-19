@@ -158,7 +158,7 @@ def main(args):
 
         # evaluate for multiple update steps
         if batch % args.test_freq == 0:
-            test_tasks = sampler.sample_tasks(num_tasks=args.meta_batch_size)
+            test_tasks = sampler.sample_tasks(num_tasks=args.test_batch_size)
             test_episodes = metalearner.test(test_tasks, num_steps=args.num_test_steps,
                                              batch_size=args.test_batch_size, halve_lr=args.halve_test_lr,batch=batch)
             all_returns = total_rewards(test_episodes, interval=True)
@@ -174,7 +174,7 @@ def main(args):
             torch.save(policy.state_dict(), f)
 
     # at end of all things
-    test_tasks = sampler.sample_tasks(num_tasks=args.meta_batch_size)
+    test_tasks = sampler.sample_tasks(num_tasks=args.test_batch_size)
     test_episodes = metalearner.test(test_tasks, num_steps=args.num_test_steps,
                                         batch_size=args.test_batch_size, halve_lr=args.halve_test_lr)
     all_returns = total_rewards(test_episodes, interval=True)
