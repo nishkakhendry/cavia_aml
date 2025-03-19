@@ -136,6 +136,7 @@ class MetaLearner(object):
                 # task_cp[batch][str(i)][task] = self.policy.context_params
 
             episodes_per_task.append(curr_episodes)
+            print("task_cp - - - - at task ", task_idx, " is ----- ",task_cp)
             task_idx += 1
 
         self.policy.reset_context()
