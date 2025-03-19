@@ -98,7 +98,7 @@ class MetaLearner(object):
         """Sample trajectories (before and after the update of the parameters)
         for all the tasks `tasks`.batchsize
         """
-        task_cp = {batch: {"0": {}, "1": {}, "2": {}, "3": {}, "4": {}}}
+        task_cp = {batch: {"1": {}, "2": {}, "3": {}, "4": {}, "5": {}}}
         episodes_per_task = []
         task_idx = 0
         for task in tasks:
