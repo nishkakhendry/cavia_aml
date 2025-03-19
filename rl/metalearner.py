@@ -98,7 +98,7 @@ class MetaLearner(object):
         """Sample trajectories (before and after the update of the parameters)
         for all the tasks `tasks`.batchsize
         """
-        task_cp = {batch: {"1": {}, "2": {}, "3": {}, "4": {}, "5": {}}}
+        task_cp = {"batch_"+str(batch): {"grad_update_1": {}, "grad_update_2": {}, "grad_update_3": {}, "grad_update_4": {}, "grad_update_5": {}}}
         episodes_per_task = []
         task_idx = 0
         for task in tasks:
@@ -132,7 +132,7 @@ class MetaLearner(object):
                 test_episodes = self.sampler.sample(self.policy, gamma=self.gamma, params=params, batch_size=batch_size)
                 curr_episodes.append(test_episodes)
 
-                task_cp[batch][str(i)][str(task_idx)]  = {"task": task, "context_params": self.policy.context_params}
+                task_cp[batch]["grad_update_"+str(i)]["task_"+str(task_idx)]  = {"task": task, "context_params": self.policy.context_params.tolist()}
                 # task_cp[batch][str(i)][task] = self.policy.context_params
 
             episodes_per_task.append(curr_episodes)
