@@ -174,9 +174,9 @@ def main(args):
             torch.save(policy.state_dict(), f)
 
     # at end of all things
-    test_tasks = sampler.sample_tasks(num_tasks=args.test_batch_size)
+    test_tasks = sampler.sample_tasks(num_tasks=200)
     test_episodes = metalearner.test(test_tasks, num_steps=args.num_test_steps,
-                                        batch_size=args.test_batch_size, halve_lr=args.halve_test_lr, batch=500)    # was default 0 - added this after 2 cp run
+                                        batch_size=200, halve_lr=args.halve_test_lr, batch=500)    # was default 0 - added this after 2 cp run
     all_returns = total_rewards(test_episodes, interval=True)   
     for num in range(args.num_test_steps + 1):
         writer.add_scalar('final_evaluation_rew/avg_rew ' + str(num), all_returns[0][num], batch)

@@ -11,6 +11,7 @@ def parse_tfevent_log(root_dir):
         #         print(e.summary.value)
         #         # print(value.simple_value)
             
+
 if __name__ == "__main__":
     # dir_path = "C:\\Users\\nishk\\OneDrive\\Desktop\\LT\\cavia_aml\\rl\\logs\\HalfCheetahDir-v1\\cavia\\"
     # exp_name = "2_lr=1.0tau=1.0_11_03_2025_17_38_49\\events.out.tfevents.1741714729.e0822e68336f"    
