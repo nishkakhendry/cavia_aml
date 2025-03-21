@@ -116,7 +116,7 @@ def main(args):
                 hidden_sizes=(args.hidden_size,) * args.num_layers)
 
     # load state dict for policy here?
-    load_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/saves/5_lr=0.2tau=1.0_19_03_2025_21_49_46/policy-499.pt"
+    load_path = "./rl/saves/5_lr=0.2tau=1.0_19_03_2025_21_49_46/policy-499.pt"
     policy.load_state_dict(torch.load(load_path))
     # policy.eval() # doesn't apply?
     

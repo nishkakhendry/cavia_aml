@@ -30,7 +30,7 @@ if __name__ == "__main__":
     
     
     # 5 CP
-    log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia/5_lr=0.2tau=1.0_19_03_2025_21_49_46/events.out.tfevents.1742420986.e8faa17b3fb1"
+    log_path = "./logs/2DNavigation-v0/cavia/5_lr=0.2tau=1.0_19_03_2025_21_49_46/events.out.tfevents.1742420986.e8faa17b3fb1"
 
 
     # # 2dNavigation-v0 MAML
