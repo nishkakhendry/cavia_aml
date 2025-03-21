@@ -24,5 +24,6 @@
   "seed": 42,
   "make_deterministic": false,
   "output_folder": "cavia",
-  "device": "cpu"
+  "device": "cpu",
+  "num_test_tasks": 40
 }
