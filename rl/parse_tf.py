@@ -6,7 +6,7 @@ def parse_tfevent_log(root_dir):
     file_full_path = os.path.join(root_dir)
     all_train_returns = [] 
     for e in summary_iterator(file_full_path):
-        # print(e.summary.value)
+        print(e.summary.value)
         for value in e.summary.value:
             if "returns/after_update" in value.tag:
                 print(e.summary.value)
@@ -28,14 +28,16 @@ if __name__ == "__main__":
     # 2dNavigation-v0 CAVIA
     # # 2 CP - old (no json)
     # log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0_old/cavia/2_lr=1.0tau=1.0_13_03_2025_02_20_16/events.out.tfevents.1741832416.d91585773a5e"
-    # # 2 CP - new (with json)
-    # log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia/2_lr=0.2tau=1.0_20_03_2025_18_50_09/events.out.tfevents.1742496609.e8faa17b3fb1"
-    # 5 CP
-    log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia/5_lr=0.2tau=1.0_19_03_2025_21_49_46/events.out.tfevents.1742420986.e8faa17b3fb1"
+    # 2 CP - new (with json) -- USE
+    log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia/2_lr=0.2tau=1.0_20_03_2025_18_50_09/events.out.tfevents.1742496609.e8faa17b3fb1"
+    # # 5 CP
+    # log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia/5_lr=0.2tau=1.0_19_03_2025_21_49_46/events.out.tfevents.1742420986.e8faa17b3fb1"
 
     # # 5 CP load and test
     # log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia_test/5_lr=0.2tau=1.0_21_03_2025_13_21_30/events.out.tfevents.1742563290.e8faa17b3fb1"
 
+    # # 5 CP load and test - policy 493
+    # log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia_test/5_lr=0.2tau=1.0_21_03_2025_16_24_48/events.out.tfevents.1742574288.e8faa17b3fb1"
 
     # # 2dNavigation-v0 MAML
     # log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/HalfCheetahDir-v1/maml/lr=10tau=1.0_16_03_2025_23_02_25/events.out.tfevents.1742166145.d2d58bd675f2"

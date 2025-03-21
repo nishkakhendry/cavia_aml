@@ -116,10 +116,10 @@ def main(args):
                 hidden_sizes=(args.hidden_size,) * args.num_layers)
 
     # load state dict for policy here?
-    # 5 cp 2D CAVIA
-    load_path = "./saves/5_lr=0.2tau=1.0_19_03_2025_21_49_46/policy-493.pt"
-    # # 2 cp 2D CAVIA 
-    # load_path = "./saves/2_lr=0.2tau=1.0_20_03_2025_18_50_09/policy-499.pt"
+    # # 5 cp 2D CAVIA
+    # load_path = "./saves/5_lr=0.2tau=1.0_19_03_2025_21_49_46/policy-493.pt"
+    # 2 cp 2D CAVIA 
+    load_path = "./saves/2_lr=0.2tau=1.0_20_03_2025_18_50_09/policy-455.pt"
 
     policy.load_state_dict(torch.load(load_path))
     # policy.eval() # doesn't apply?
