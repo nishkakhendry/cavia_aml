@@ -30,7 +30,7 @@ def get_context_params(json_path):
 
 if __name__ == "__main__":
     # json_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia/5_lr=0.2tau=1.0_19_03_2025_21_49_46/CAVIA_2D_5cp_task_cp.json"
-    # Perfect like paper
+    # Perfect like paper - 2D CAVIA 200 test 2 cp
     json_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia/2_lr=0.2tau=1.0_20_03_2025_18_50_09/task_cp_2D_CAVIA_2cp_200test.json"
     
     goal_x, goal_y, cp1, cp2 = get_context_params(json_path)
