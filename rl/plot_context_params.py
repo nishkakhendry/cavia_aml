@@ -31,9 +31,9 @@ def get_context_params(json_path):
 if __name__ == "__main__":
     # json_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia/5_lr=0.2tau=1.0_19_03_2025_21_49_46/CAVIA_2D_5cp_task_cp.json"
     # Perfect like paper - 2D CAVIA 200 test 2 cp
-    # json_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia/2_lr=0.2tau=1.0_20_03_2025_18_50_09/task_cp_2D_CAVIA_2cp_200test.json"
+    json_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia/2_lr=0.2tau=1.0_20_03_2025_18_50_09/task_cp_2D_CAVIA_2cp_200test.json"
     
-    json_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/task_cp.json"
+    # json_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/task_cp.json"
     
     goal_x, goal_y, cp1, cp2 = get_context_params(json_path)
     # goal_x, goal_y, cp1, cp2, cp3, cp4, cp5 = get_context_params(json_path)
@@ -51,7 +51,7 @@ if __name__ == "__main__":
         if count == 0:
             ax.set_ylabel('goal_y')
         ax.set_xlabel('goal_x')
-        ax.title.set_text(f'Context para {count + 1}')
+        ax.title.set_text(f'Context parameter {count + 1}')
         sc = ax.scatter(goal_x, goal_y, c=cps[count], cmap="viridis")
         # ax2.scatter(goal_x, goal_y, c=cp2, cmap='viridis')
         # ax3.scatter(goal_x, goal_y, c=cp3, cmap='viridis')

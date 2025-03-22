@@ -118,8 +118,12 @@ def main(args):
     # load state dict for policy here?
     # # 5 cp 2D CAVIA
     # load_path = "./saves/5_lr=0.2tau=1.0_19_03_2025_21_49_46/policy-493.pt"
-    # 2 cp 2D CAVIA 
-    load_path = "./saves/2_lr=0.2tau=1.0_20_03_2025_18_50_09/policy-455.pt"
+    # # 2 cp 2D CAVIA 
+    # load_path = "./saves/2_lr=0.2tau=1.0_20_03_2025_18_50_09/policy-499.pt"     # used this for 200 task cp plots
+    # load_path = "./saves/2_lr=0.2tau=1.0_20_03_2025_18_50_09/policy-455.pt"     # gave meh results for final_evaluation_rew
+
+    # 50 cp HalfCheetha Dir
+    load_path = "./saves/50_lr=10tau=1.0_14_03_2025_19_50_07/policy-499.pt"	
 
     policy.load_state_dict(torch.load(load_path))
     # policy.eval() # doesn't apply?
@@ -131,59 +135,8 @@ def main(args):
     metalearner = MetaLearner(sampler, policy, baseline, gamma=args.gamma, fast_lr=args.fast_lr, tau=args.tau,
                               device=args.device)
 
-    # for batch in range(args.num_batches):
-    #     print('Batch', batch, 'of', args.num_batches-1)
-    #     # get a batch of tasks
-    #     tasks = sampler.sample_tasks(num_tasks=args.meta_batch_size)
-
-    #     # do the inner-loop update for each task
-    #     # this returns training (before update) and validation (after update) episodes
-    #     episodes, inner_losses = metalearner.sample(tasks, first_order=args.first_order)
-
-    #     # take the meta-gradient step
-    #     outer_loss = metalearner.step(episodes, max_kl=args.max_kl, cg_iters=args.cg_iters,
-    #                                   cg_damping=args.cg_damping, ls_max_steps=args.ls_max_steps,
-    #                                   ls_backtrack_ratio=args.ls_backtrack_ratio)
-
-    #     # -- logging
-
-    #     curr_returns = total_rewards(episodes, interval=True)
-    #     print('   return after update: ', curr_returns[0][1])
-
-    #     # Tensorboard
-    #     writer.add_scalar('policy/actions_train', episodes[0][0].actions.mean(), batch)
-    #     writer.add_scalar('policy/actions_test', episodes[0][1].actions.mean(), batch)
-
-    #     writer.add_scalar('running_returns/before_update', curr_returns[0][0], batch)
-    #     writer.add_scalar('running_returns/after_update', curr_returns[0][1], batch)
-
-    #     writer.add_scalar('running_cfis/before_update', curr_returns[1][0], batch)
-    #     writer.add_scalar('running_cfis/after_update', curr_returns[1][1], batch)
-
-    #     writer.add_scalar('loss/inner_rl', np.mean(inner_losses), batch)
-    #     writer.add_scalar('loss/outer_rl', outer_loss.item(), batch)
-
-    #     # -- evaluation
-
-    #     # evaluate for multiple update steps
-    #     if batch % args.test_freq == 0:
-    #         test_tasks = sampler.sample_tasks(num_tasks=args.test_batch_size)
-    #         test_episodes = metalearner.test(test_tasks, num_steps=args.num_test_steps,
-    #                                          batch_size=args.test_batch_size, halve_lr=args.halve_test_lr,batch=batch)
-    #         all_returns = total_rewards(test_episodes, interval=True)
-    #         for num in range(args.num_test_steps + 1):
-    #             writer.add_scalar('evaluation_rew/avg_rew ' + str(num), all_returns[0][num], batch)
-    #             writer.add_scalar('evaluation_cfi/avg_rew ' + str(num), all_returns[1][num], batch)
-
-    #         print('   inner RL loss:', np.mean(inner_losses))
-    #         print('   outer RL loss:', outer_loss.item())
-
-    #     # -- save policy network
-    #     with open(os.path.join(save_folder, 'policy-{0}.pt'.format(batch)), 'wb') as f:
-    #         torch.save(policy.state_dict(), f)
-
     # at end of all things
-    num_test_tasks = 40
+    num_test_tasks = 2
     test_tasks = sampler.sample_tasks(num_tasks=num_test_tasks)
     test_episodes = metalearner.test(test_tasks, num_steps=args.num_test_steps,
                                         batch_size=num_test_tasks, halve_lr=args.halve_test_lr, batch=500)    # was default 0 - added this after 2 cp run
