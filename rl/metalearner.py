@@ -135,7 +135,7 @@ class MetaLearner(object):
                 context_params = [x.item() for x in list(self.policy.context_params)]
                 print("task is -----" , task)
                 # task_cp["batch_"+str(batch)]["grad_update_"+str(i)]["task_"+str(task_idx)]  = {"task": list(task["goal"]), "context_params": context_params}
-                task_cp["batch_"+str(batch)]["grad_update_"+str(i)]["task_"+str(task_idx)]  = {"task": list(task["direction"]), "context_params": context_params}
+                task_cp["batch_"+str(batch)]["grad_update_"+str(i)]["task_"+str(task_idx)]  = {"task": task["direction"], "context_params": context_params}
 
 
             episodes_per_task.append(curr_episodes)
