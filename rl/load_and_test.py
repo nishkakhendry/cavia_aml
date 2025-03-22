@@ -123,9 +123,9 @@ def main(args):
     # load_path = "./saves/2_lr=0.2tau=1.0_20_03_2025_18_50_09/policy-455.pt"     # gave meh results for final_evaluation_rew
 
     # 50 cp HalfCheetha Dir
-    load_path = "./saves/50_lr=10tau=1.0_14_03_2025_19_50_07/policy-499.pt"	
+    load_path = "./saves/50_lr=10tau=1.0_14_03_2025_19_50_07/policy-499.pt"	    # max at 444
 
-    policy.load_state_dict(torch.load(load_path))
+    policy.load_state_dict(torch.load(load_path,map_location=torch.device('cpu')))
     # policy.eval() # doesn't apply?
     
     # initialise baseline
