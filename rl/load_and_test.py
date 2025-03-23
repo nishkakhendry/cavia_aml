@@ -136,7 +136,7 @@ def main(args):
                               device=args.device)
 
     # at end of all things
-    num_test_tasks = 200
+    num_test_tasks = 100
     test_tasks = sampler.sample_tasks(num_tasks=num_test_tasks)
     test_episodes = metalearner.test(test_tasks, num_steps=args.num_test_steps,
                                         batch_size=num_test_tasks, halve_lr=args.halve_test_lr, batch=500)    # was default 0 - added this after 2 cp run
