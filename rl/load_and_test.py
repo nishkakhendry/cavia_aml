@@ -122,8 +122,11 @@ def main(args):
     # load_path = "./saves/2_lr=0.2tau=1.0_20_03_2025_18_50_09/policy-499.pt"     # used this for 200 task cp plots
     # load_path = "./saves/2_lr=0.2tau=1.0_20_03_2025_18_50_09/policy-455.pt"     # gave meh results for final_evaluation_rew
 
-    # 50 cp HalfCheetha Dir
-    load_path = "./saves/50_lr=10tau=1.0_14_03_2025_19_50_07/policy-499.pt"	    # max at 444
+    # 2D MAML
+    load_path = "./saves/lr=0.2tau=1.0_26_03_2025_21_21_00/policy-499.pt"
+
+    # # 50 cp HalfCheetha Dir
+    # load_path = "./saves/50_lr=10tau=1.0_14_03_2025_19_50_07/policy-499.pt"	    # max at 444
 
     policy.load_state_dict(torch.load(load_path,map_location=torch.device('cpu')))
     # policy.eval() # doesn't apply?
@@ -136,7 +139,7 @@ def main(args):
                               device=args.device)
 
     # at end of all things
-    num_test_tasks = 100
+    num_test_tasks = 40
     test_tasks = sampler.sample_tasks(num_tasks=num_test_tasks)
     test_episodes = metalearner.test(test_tasks, num_steps=args.num_test_steps,
                                         batch_size=num_test_tasks, halve_lr=args.halve_test_lr, batch=500)    # was default 0 - added this after 2 cp run
