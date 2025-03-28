@@ -123,10 +123,12 @@ def main(args):
     # load_path = "./saves/2_lr=0.2tau=1.0_20_03_2025_18_50_09/policy-455.pt"     # gave meh results for final_evaluation_rew
 
     # 2D MAML
-    load_path = "./saves/lr=0.2tau=1.0_26_03_2025_21_21_00/policy-499.pt"
+    # load_path = "./saves/lr=0.2tau=1.0_26_03_2025_21_21_00/policy-499.pt"
 
     # # 50 cp HalfCheetha Dir
     # load_path = "./saves/50_lr=10tau=1.0_14_03_2025_19_50_07/policy-499.pt"	    # max at 444
+    # HC MAML
+    load_path = "./saves/lr=0.1tau=1.0_27_03_2025_13_05_22/policy-499.pt"	 
 
     policy.load_state_dict(torch.load(load_path,map_location=torch.device('cpu')))
     # policy.eval() # doesn't apply?

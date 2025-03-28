@@ -20,5 +20,5 @@ ax.plot(-0.2, 0.3, 'rx', markersize=15, markeredgewidth=3)
 
 plt.xlabel('x')
 plt.ylabel('y')
-plt.title('Grid with Red Cross at (-0.2, 0.3)')
+plt.title('Task with goal at (-0.2, 0.3)')
 plt.show()

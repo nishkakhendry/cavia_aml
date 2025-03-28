@@ -36,18 +36,22 @@ if __name__ == "__main__":
     # exp_name = "2_lr=1.0tau=1.0_11_03_2025_17_38_49/events.out.tfevents.1741714729.e0822e68336f"    
     # parse_tfevent_log(f"{dir_path}/{exp_name}")
 
-    # # HalfCheetahDir-v1 CAVIA
-    # log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/HalfCheetahDir-v1/cavia/50_lr=10tau=1.0_14_03_2025_19_50_07/events.out.tfevents.1741981807.4390cb3eb32b"
-    # # HalfCheetahDir-v1 MAML
-    # log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/HalfCheetahDir-v1/maml/lr=10tau=1.0_16_03_2025_23_02_25/events.out.tfevents.1742166145.d2d58bd675f2"
-    
+    # # # HalfCheetahDir-v1 CAVIA
+    # log_path = "./logs/HalfCheetahDir-v1/cavia/50_lr=10tau=1.0_14_03_2025_19_50_07/events.out.tfevents.1741981807.4390cb3eb32b"
+    # HalfCheetahDir-v1 MAML
+    # old yucky
+    # log_path = "./logs/HalfCheetahDir-v1/maml/lr=10tau=1.0_16_03_2025_23_02_25/events.out.tfevents.1742166145.d2d58bd675f2"
+    # actual working version - lr 0.1
+    # log_path = "./logs/HalfCheetahDir-v1/maml/lr=0.1tau=1.0_27_03_2025_13_05_22/events.out.tfevents.1743080722.5d79741406fa"
+    log_path = "./logs/HalfCheetahDir-v1/maml_test/lr=0.1tau=1.0_28_03_2025_22_27_20/events.out.tfevents.1743200840.5d79741406fa"   # load and test
+
     # 2dNavigation-v0 CAVIA
     # # 2 CP - old (no json)
     # log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0_old/cavia/2_lr=1.0tau=1.0_13_03_2025_02_20_16/events.out.tfevents.1741832416.d91585773a5e"
     
     # 2 CP - new (with json) -- Perfect like paper
     # log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia/2_lr=0.2tau=1.0_20_03_2025_18_50_09/events.out.tfevents.1742496609.e8faa17b3fb1"
-    log_path = "./logs/2DNavigation-v0/cavia/2_lr=0.2tau=1.0_20_03_2025_18_50_09/events.out.tfevents.1742496609.e8faa17b3fb1"
+    # log_path = "./logs/2DNavigation-v0/cavia/2_lr=0.2tau=1.0_20_03_2025_18_50_09/events.out.tfevents.1742496609.e8faa17b3fb1"
     
     # # 2 CP - new but with policy 455 (max rew at train)
     # log_path = "C:/Users/nishk/OneDrive/Desktop/LT/cavia_aml/rl/logs/2DNavigation-v0/cavia_test/2_lr=0.2tau=1.0_21_03_2025_22_11_59/events.out.tfevents.1742595119.e8faa17b3fb1"
@@ -73,14 +77,14 @@ if __name__ == "__main__":
     eval_rew_MAML = [-39.039867,-23.698885,-23.936651,-25.565693, -19.127525, -21.256426] # from last eval in only train log 
     until = 4
     grad_updates = [0, 1, 2, 3, 4,5]
-    # plt.plot(grad_updates, eval_rew, label='CAVIA')
-    plt.plot(grad_updates[:until], eval_rew_CAVIA[:until], marker="o", label='CAVIA')
-    plt.plot(grad_updates[:until], eval_rew_MAML[:until], marker="o", label='MAML')
-    plt.xticks(grad_updates[:until], grad_updates[:until])
-    plt.legend()
-    plt.xlabel('Number of inner updates')
-    plt.ylabel('Total reward')
-    # plt.title('2D Navigation Env')
-    plt.title('HalfCheetah Direction Env')
-    plt.show()
+    # # plt.plot(grad_updates, eval_rew, label='CAVIA')
+    # plt.plot(grad_updates[:until], eval_rew_CAVIA[:until], marker="o", label='CAVIA')
+    # plt.plot(grad_updates[:until], eval_rew_MAML[:until], marker="o", label='MAML')
+    # plt.xticks(grad_updates[:until], grad_updates[:until])
+    # plt.legend()
+    # plt.xlabel('Number of inner updates')
+    # plt.ylabel('Total reward')
+    # # plt.title('2D Navigation Env')
+    # plt.title('HalfCheetah Direction Env')
+    # plt.show()
 
