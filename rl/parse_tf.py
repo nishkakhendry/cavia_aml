@@ -38,6 +38,11 @@ if __name__ == "__main__":
 
     # # # HalfCheetahDir-v1 CAVIA
     # log_path = "./logs/HalfCheetahDir-v1/cavia/50_lr=10tau=1.0_14_03_2025_19_50_07/events.out.tfevents.1741981807.4390cb3eb32b"
+    # retry with lr 10 - garbage?
+    # log_path = "./logs/HalfCheetahDir-v1/cavia/50_lr=10tau=1.0_28_03_2025_22_55_32/events.out.tfevents.1743202532.5d79741406fa"
+    # # retry with lr 1
+    # log_path = "./logs/HalfCheetahDir-v1/cavia/50_lr=1.0tau=1.0_29_03_2025_00_03_21/events.out.tfevents.1743206601.5d79741406fa"
+
     # HalfCheetahDir-v1 MAML
     # old yucky
     # log_path = "./logs/HalfCheetahDir-v1/maml/lr=10tau=1.0_16_03_2025_23_02_25/events.out.tfevents.1742166145.d2d58bd675f2"
@@ -74,17 +79,21 @@ if __name__ == "__main__":
     
     
     eval_rew_CAVIA = parse_tfevent_log(log_path)
-    eval_rew_MAML = [-39.039867,-23.698885,-23.936651,-25.565693, -19.127525, -21.256426] # from last eval in only train log 
+    # eval_rew_MAML = [-39.039867,-23.698885,-23.936651,-25.565693, -19.127525, -21.256426] # 2D - from last eval in only train log 
+    
+    # eval_rew_CAVIA = []
+    eval_rew_MAML = [-27.296541,420.20038,499.67142,475.71887,467.92648,459.78778] # HC - from last eval in only train log 
+    
     until = 4
     grad_updates = [0, 1, 2, 3, 4,5]
-    # # plt.plot(grad_updates, eval_rew, label='CAVIA')
-    # plt.plot(grad_updates[:until], eval_rew_CAVIA[:until], marker="o", label='CAVIA')
-    # plt.plot(grad_updates[:until], eval_rew_MAML[:until], marker="o", label='MAML')
-    # plt.xticks(grad_updates[:until], grad_updates[:until])
-    # plt.legend()
-    # plt.xlabel('Number of inner updates')
-    # plt.ylabel('Total reward')
-    # # plt.title('2D Navigation Env')
-    # plt.title('HalfCheetah Direction Env')
-    # plt.show()
+    # plt.plot(grad_updates, eval_rew, label='CAVIA')
+    plt.plot(grad_updates[:until], eval_rew_CAVIA[:until], marker="o", label='CAVIA')
+    plt.plot(grad_updates[:until], eval_rew_MAML[:until], marker="o", label='MAML')
+    plt.xticks(grad_updates[:until], grad_updates[:until])
+    plt.legend()
+    plt.xlabel('Number of inner updates')
+    plt.ylabel('Total reward')
+    # plt.title('2D Navigation Env')
+    plt.title('HalfCheetah Direction Env')
+    plt.show()
 
